@@ -44,7 +44,7 @@ int main(void) {
    int my_rank, comm_sz, n, local_n, local_n_else;   
    double a, b, h, local_a, local_b;
    double local_int, total_int;
-   double local_time, real_time;
+   double local_time;
 
    /* Let the system do what it needs to start up MPI */
    MPI_Init(NULL, NULL);
@@ -72,17 +72,25 @@ int main(void) {
 
    local_int = Trap(local_a, local_b, local_n, h);
 
-   local_time = MPI_Wtime();
+   
    /* Add up the integrals calculated by each process */
-   MPI_Reduce(&local_int, &total_int, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-   local_time = MPI_Wtime() - local_time;
-   MPI_Reduce(&local_time, &real_time, 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD);
+   if (my_rank == 0){
+      local_time = MPI_Wtime();
+      total_int = local_int;
+      for (int i=1; i<comm_sz; i++){
+         MPI_Recv(&local_int, 1, MPI_DOUBLE, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+         total_int += local_int;
+      }
+      local_time = MPI_Wtime() - local_time;
+   } else {
+      MPI_Send(&local_int, 1, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
+   }
    /* Print the result */
    if (my_rank == 0) {
       printf("With n = %d trapezoids, our estimate\n", n);
       printf("of the integral from %f to %f = %.15e\n",
           a, b, total_int);
-      printf("MPI_Reduce time: %.15e\n", real_time);
+      printf("MPI_Reduce time: %.15e\n", local_time);
    }
 
    /* Shut down MPI */

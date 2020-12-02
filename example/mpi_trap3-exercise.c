@@ -58,7 +58,7 @@ int main(void) {
 
    h = (b-a)/n;                  /* h is the same for all processes */
    local_n = n/comm_sz;          /* So is the number of trapezoids  */
-   local_n_else = n%comm_sz;     /* sometimes n cannot be dicided by comm_sz*/
+   local_n_else = n%comm_sz;     /* sometimes n cannot be dicided by comm_sz */
 
    /* Length of each process' interval of
     * integration = local_n*h.  So my interval
