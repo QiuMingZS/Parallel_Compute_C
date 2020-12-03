@@ -59,7 +59,7 @@ int main(void) {
 
    h = (b-a)/n;                  /* h is the same for all processes */
    local_n = n/comm_sz;          /* So is the number of trapezoids  */
-   local_n_else = n%comm_sz;     /* sometimes n cannot be dicided by comm_sz*/
+   local_n_else = n%comm_sz;     /* sometimes n cannot be divided by comm_sz*/
 
    /* Length of each process' interval of
     * integration = local_n*h.  So my interval
@@ -90,7 +90,7 @@ int main(void) {
       printf("With n = %d trapezoids, our estimate\n", n);
       printf("of the integral from %f to %f = %.15e\n",
           a, b, total_int);
-      printf("MPI_Reduce time: %.15e\n", local_time);
+      printf("Point2Point calculation time: %.15e\n", local_time);
    }
 
    /* Shut down MPI */
