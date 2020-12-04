@@ -101,12 +101,3 @@ MPI_BXOR
 MPI_MAXLOC
 MPI_MINLOC
 ************************************* */
-
-
-running-mars@runningmars-P7xxTM1:~/Parallel_Compute_C/test$ mpicc -g -Wall -o prog1 prog1.c
-running-mars@runningmars-P7xxTM1:~/Parallel_Compute_C/test$ mpiexec -n 16 ./prog1
-Ints being summed:
-   0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
-Sum = 120
-Calculating global time spend: 6.794929504394531e-05
-running-mars@runningmars-P7xxTM1:~/Parallel_Compute_C/test$ 

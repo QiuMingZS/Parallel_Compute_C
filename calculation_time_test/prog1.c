@@ -58,7 +58,7 @@ int main(void) {
          printf("%d ", all_ints[i]);
       printf("\n");
       printf("Sum = %d\n",sum);
-      printf("Calculating global time spend: %.15e\n", elapsed);
+      printf("Calculating global time spend: %.15e seconds\n", elapsed);
       free(all_ints);
    } else {
       /*
