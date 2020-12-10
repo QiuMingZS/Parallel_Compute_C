@@ -24,6 +24,8 @@ int MPI_Send(
     int             tag,
     MPI_Comm        communicator);
 
+int MPI_Send(msg_buf_p, msg_size, msg_type, dest, tag, communicator);
+
 int MPI_Recv(
     void*           msg_buf_p,
     int             buf_size,
@@ -32,6 +34,8 @@ int MPI_Recv(
     int             tag,
     MPI_Comm        communicator,
     MPI_Status      status_p);          // MPI_STATUS_IGNORE
+
+int MPI_Recv(msg_buf_p, buf_size, buf_type, source, tag, communicator, status_p);     
 
 
 int MPI_Reduce(
@@ -101,3 +105,14 @@ MPI_BXOR
 MPI_MAXLOC
 MPI_MINLOC
 ************************************* */
+
+
+int MPI_Scan(
+    void*           sendbuf_p,
+    void*           recvbuf_p,
+    int             count,
+    MPI_Datatype    datatype,
+    MPI_Op          operator,
+    MPI_Comm        comm);
+
+int MPI_Scan(sendbuf_p, recvbuf_p, count, datatype, operator, comm);
