@@ -47,6 +47,8 @@ int MPI_Reduce(
     int             dest_process,
     MPI_Comm        comm);
 
+int MPI_Reduce(input_data_p, output_data_p, count, datatype, operator, dest_process, comm);
+
 int MPI_Allreduce(
     void*           input_data_p,
     void*           output_data_p,
@@ -55,12 +57,16 @@ int MPI_Allreduce(
     MPI_Op          operator,
     MPI_Comm        comm);
 
+int MPI_Allreduce(input_data_p, output_data_p, count, datatype, operator, comm);
+
 int MPI_Bcast(
     void*           data_p,
     int             count,
     MPI_Datetype    datatype,
     int             source_proc,
     MPI_Comm        comm);
+
+int MPI_Bcast(data_p, count, datatype, source_proc, comm);
 
 int MPI_Scatter(
     void*           send_buf_p,
@@ -72,6 +78,8 @@ int MPI_Scatter(
     int             src_proc,
     MPI_Comm        comm);
 
+int MPI_Scatter(send_buf_p, send_count, send_type, recv_buf_p, recv_count, recv_type, src_proc, comm);
+
 int MPI_Gather(
     void*           send_buf_p,
     int             send_count,
@@ -82,6 +90,8 @@ int MPI_Gather(
     int             dest_proc,
     MPI_Comm        comm);
 
+int MPI_Gather(send_buf_p, send_count, send_type, recv_buf_p, recv_count, recv_type, dest_proc, comm);
+
 int MPI_Allgather(
     void*           send_buf_p,
     int             send_count,
@@ -90,6 +100,8 @@ int MPI_Allgather(
     int             recv_count,
     MPI_Datatype    recv_type,
     MPI_Comm        comm);
+
+int MPI_Allgather(send_buf_p, send_count, send_type, recv_buf_p, recv_count, recv_type, comm);
 
 /* Predefined Reduction Operators in MPI
 MPI_MAX
