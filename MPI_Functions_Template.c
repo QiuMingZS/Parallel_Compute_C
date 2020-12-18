@@ -35,7 +35,25 @@ int MPI_Recv(
     MPI_Comm        communicator,
     MPI_Status      status_p);          // MPI_STATUS_IGNORE
 
-int MPI_Recv(msg_buf_p, buf_size, buf_type, source, tag, communicator, status_p);     
+int MPI_Recv(msg_buf_p, buf_size, buf_type, source, tag, communicator, status_p);   
+
+int MPI_Sendrecv(
+    void*           send_buf_p,
+    int             send_buf_size,
+    MPI_Datatype    send_buf_type,
+    int             dest,
+    int             send_tag,
+    void*           recv_buf_p,
+    int             recv_buf_size,
+    MPI_Datatype    recv_buf_type,
+    int             source,
+    int             recv_tag,
+    MPI_Comm        communicator,
+    MPI_Status*     status_p
+)
+
+int MPI_Sendrecv(send_buf_p, send_buf_size, send_buf_type, dest, send_tag, recv_buf_p, 
+                recv_buf_size, recv_buf_type, source, recv_tag, communicator, status_p)
 
 
 int MPI_Reduce(
@@ -62,6 +80,8 @@ int MPI_Bcast(
     int             source_proc,
     MPI_Comm        comm);
 
+int MPI_Bcast(data_p, count, datatype, source_proc, comm);
+
 int MPI_Scatter(
     void*           send_buf_p,
     int             send_count,
@@ -81,6 +101,7 @@ int MPI_Gather(
     MPI_Datatype    recv_type,
     int             dest_proc,
     MPI_Comm        comm);
+int MPI_Gather(send_buf_p, send_count, send_type, recv_buf_p, recv_count, recv_type, dest_proc, comm);
 
 int MPI_Allgather(
     void*           send_buf_p,
