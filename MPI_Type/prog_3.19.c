@@ -34,7 +34,7 @@ int main(void){
     loc_mat = malloc(n*n*sizeof(double));
     Build_indexed_type(n, &indexed_mpi_t);
     if (my_rank == 0){
-        printf("Please input the data of the matrix: \n");
+        printf("Please input the data of the matrix(Sender): \n");
         for (int i=0; i<n; i++){
             for (int j=0; j<n; j++){
                 scanf("%lf", &loc_mat[i*n + j]);
@@ -45,7 +45,7 @@ int main(void){
     }else{
         memset(loc_mat, 0, n*n*sizeof(double));
         MPI_Recv(loc_mat, 1, indexed_mpi_t, 0, 0, comm, MPI_STATUS_IGNORE);
-        printf("The upper triangular part: \n");
+        printf("The upper triangular part(Receiver): \n");
         for (int i=0; i<n; i++){
             for (int j=0; j<n; j++){
                 printf("%f ", loc_mat[i*n + j]);
