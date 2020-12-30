@@ -9,7 +9,7 @@ int main(int argc, char* argv[]){
     double a[10];
     printf("Please input 10 numbers for sorting...\n");
     for (int i=0; i<10; i++){
-        scanf("%lf ", &a[i]);
+        scanf("%lf", &a[i]);
     }
     
     int i;
