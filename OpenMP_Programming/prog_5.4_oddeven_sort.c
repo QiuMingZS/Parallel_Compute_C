@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
-#include <math.h>
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
@@ -18,7 +17,7 @@ int main(int argc, char* argv[]){
     int n = 20000;
     double a[20000];
     for (int j=0; j<n; j++){
-        a[j] = sin(j/10000.0);
+        a[j] = 1 - j/20000.0;
     }
     int i;
     for (int phase = 0; phase < n; phase++){
