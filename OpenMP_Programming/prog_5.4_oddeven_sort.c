@@ -12,12 +12,12 @@ int main(int argc, char* argv[]){
         scanf("%lf ", a[i]);
     }
     
-    
+    int i;
     for (int phase = 0; phase < n; phase++){
         if (phase % 2 == 0)
 #           pragma omp parallel for num_threads(thread_count) \
                 default(none) shared(a, n) private(i, tmp)
-            for (int i=1; i<n; i+=2){
+            for (i=1; i<n; i+=2){
                 if (a[i-1] > a[i]){
                     tmp = a[i-1];
                     a[i-1] = a[i];
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
             else
 #           pragma omp parallel for num_threads(thread_count) \
                 default(none) shared(a, n) private(i, tmp)
-            for (int i=1; i<n-1; i+=2){
+            for (i=1; i<n-1; i+=2){
                 if (a[i] > a[i+1]){
                     tmp = a[i+1];
                     a[i+1] = a[i];
