@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
     for (int j=0; j<n; j++){
         a[j] = 1 - j/20000.0;
     }
-    int i;
+    int i, phase;
     double start, finish, elapsed;
     GET_TIME(start);
 #   pragma omp parallel num_threads(thread_count) \
