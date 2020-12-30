@@ -1,0 +1,3 @@
+running-mars@runningmars-P7xxTM1:~/Parallel_Compute_C/OpenMP_Programming$ gcc -g -Wall -fopenmp -o  estimate_pi_momtecarlo estimate_pi_momtecarlo.c 
+running-mars@runningmars-P7xxTM1:~/Parallel_Compute_C/OpenMP_Programming$ ./estimate_pi_momtecarlo 16
+PI estimated: 3.139155
