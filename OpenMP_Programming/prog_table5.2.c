@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
-#include <math.h>
+#include "timer.h"
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
