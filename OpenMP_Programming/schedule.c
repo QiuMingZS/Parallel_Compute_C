@@ -30,6 +30,9 @@ double f(int i){
     double return_val = 0.0;
 
     for (j=start; j<=finish; j++){
+        if (j == 0){
+            j += 1;
+        }
         return_val += j*j/j/j + 0.001;
     }
     return return_val;
