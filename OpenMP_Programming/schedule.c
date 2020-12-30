@@ -7,14 +7,14 @@ double f(int i);
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
-    long long int total_num = 900000;
-    long long int total_count = 0;
+    int total_num = 900000;
+    double sum = 0;
     double start, finish, elapsed;
     GET_TIME(start);
 #   pragma omp parallel for num_threads(thread_count) \
-        reduction(+:total_count)
-    for (long long int i=0; i<total_num; i++){
-		total_count += f(i);
+        reduction(+:sum)
+    for (int i=0; i<total_num; i++){
+		sum += f(i);
     }
     GET_TIME(finish);
     elapsed = finish - start;
