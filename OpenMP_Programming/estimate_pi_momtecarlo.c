@@ -14,6 +14,7 @@ int main(int argc, char* argv[]){
     estimate(local_num, &total_count);
 
     PI = (double) total_count / total_num;
+    printf("Total count: %d \n", total_count)；
     printf("PI estimated: %lf\n", PI);
     return 0;
 }
