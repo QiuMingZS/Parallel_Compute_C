@@ -1,3 +1,6 @@
+/*
+This code is based on prog_5.4 and prog_5.5, just add time count
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
