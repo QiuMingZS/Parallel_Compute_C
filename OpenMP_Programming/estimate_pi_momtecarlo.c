@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 
 void estimate(int n, long long int* total_count){
     int my_rank = omp_get_thread_num();
-    int local_count;
+    int local_count = 0;
     double x, y;
     srand(my_rank);
 	for (long long int i=0; i<n; i++){
