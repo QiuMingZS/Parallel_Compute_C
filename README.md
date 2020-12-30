@@ -23,3 +23,9 @@ gcc -o hello  hello_world.c
 mpicc -g -Wall -o multi_hello multi_hello.c 
 mpiexec -n 4 ./multi_hello
 ```
+
+# Parallel C program with OpenMP, compile and run like this:
+```bash
+gcc -g -Wall -fopenmp -o omp_hello omp_hello.c
+./omp_hello 4
+```
