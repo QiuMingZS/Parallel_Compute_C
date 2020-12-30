@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
+#include<time.h>
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
@@ -17,6 +18,7 @@ int main(int argc, char* argv[]){
     int n = 20000;
     double a[20000];
     for (int j=0; j<n; j++){
+        srand(time(NULL));
         a[j] = rand()%11;
     }
     int i;
