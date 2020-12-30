@@ -9,7 +9,7 @@ int main(int argc, char* argv[]){
     double a[10];
     printf("Please input 10 numbers for sorting...\n");
     for (int i=0; i<10; i++){
-        scanf("%lf ", a[i]);
+        scanf("%lf ", &a[i]);
     }
     
     int i;
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
                     a[i] = tmp;
                 }
             }
-            else
+        else
 #           pragma omp parallel for num_threads(thread_count) \
                 default(none) shared(a, n) private(i, tmp)
             for (i=1; i<n-1; i+=2){
