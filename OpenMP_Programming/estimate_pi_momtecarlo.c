@@ -6,7 +6,7 @@ void estimate(int n, long long int* total_count);
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
-    long long int total_num = 900000000;
+    long long int total_num = 90000000;
     long long int total_count = 0;
     double PI;
     double x, y;
