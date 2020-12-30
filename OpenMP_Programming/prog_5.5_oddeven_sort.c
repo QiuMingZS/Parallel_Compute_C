@@ -13,8 +13,8 @@ int main(int argc, char* argv[]){
     }
     
     int i;
-#           pragma omp parallel for num_threads(thread_count) \
-                default(none) shared(a, n) private(i, tmp, phase)
+#   pragma omp parallel num_threads(thread_count) \
+        default(none) shared(a, n) private(i, tmp, phase)
     for (int phase = 0; phase < n; phase++){
         if (phase % 2 == 0)
 #           pragma omp for
