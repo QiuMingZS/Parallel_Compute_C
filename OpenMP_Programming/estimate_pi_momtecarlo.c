@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 			total_count += 1;
 		}
 	}
-    PI = (double) total_count / total_num;
+    PI = 4 * (double) total_count / total_num;
     printf("PI estimated: %lf\n", PI);
     return 0;
 }
