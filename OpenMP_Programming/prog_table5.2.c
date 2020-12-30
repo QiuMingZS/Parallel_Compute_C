@@ -5,12 +5,10 @@
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
     double tmp;
-    int n = 10;
-    double a[10];
-    
-    printf("Please input 10 numbers for sorting...\n");
-    for (int i=0; i<10; i++){
-        scanf("%lf", &a[i]);
+    int n = 20000;
+    double a[20000];
+    for (int j=0; j<n; j++){
+        a[j] = 1 - j/20000.0;
     }
     int i;
     for (int phase = 0; phase < n; phase++){
