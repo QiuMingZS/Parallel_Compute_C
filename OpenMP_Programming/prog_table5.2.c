@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
+#include <math.h>
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
@@ -11,6 +12,8 @@ int main(int argc, char* argv[]){
         a[j] = 1 - j/20000.0;
     }
     int i;
+    double start, finish, elapsed;
+    GET_TIME(start);
     for (int phase = 0; phase < n; phase++){
         if (phase % 2 == 0)
 #           pragma omp parallel for num_threads(thread_count) \
@@ -34,10 +37,9 @@ int main(int argc, char* argv[]){
             }
             
     }
-    for (int i=0; i<n; i++){
-        printf("%.15e ", a[i]);
-    }
-    printf("\n");
+    GET_TIME(finish);
+    elapsed = finish - start;
+    printf("Time takes %lf seconds\n", elapsed);
     return 0;
 }
 
