@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <omp.h>
 
-double estimate(int n, long long int* total_count);
+void estimate(int n, long long int* total_count);
 
 int main(int argc, char* argv[]){
     int thread_count = strtol(argv[1], NULL, 10);
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 }
 
 
-double estimate(int n, long long int* total_count){
+void estimate(int n, long long int* total_count){
     int my_rank = omp_get_thread_num();
     int local_count;
     double x, y;
