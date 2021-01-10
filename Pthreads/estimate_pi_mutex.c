@@ -5,7 +5,7 @@
 int thread_count;
 pthread_mutex_t mutex;
 
-int n = 10000;
+int n = 100000;
 int flag = 0;
 double sum= 0;
 
