@@ -37,20 +37,11 @@ int main(int argc, char* argv[]) {
    thread_count = strtol(argv[1], NULL, 10);  
    if (thread_count <= 0 || thread_count > MAX_THREADS) Usage(argv[0]);
 
-/* Initialize thread_handles */
-   
-   // Add code here.
+   thread_handles = malloc(thread_count*sizeof(pthread_t));
+   for (thread = 0; thread < thread_count; thread++){
+      pthread_create(&thread_handles[thread], NULL, Hello, (void*) thread);
+   }
  
-/* End of initializing thread_handles */
-
-
-   for (thread = 0; thread < thread_count; thread++)  
-
-/* Call pthread_create() */
-   
-   // Add code here.
- 
-/* End */  
 
    printf("Hello from the main thread\n");
 

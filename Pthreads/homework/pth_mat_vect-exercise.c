@@ -72,19 +72,13 @@ int main(int argc, char* argv[]) {
    Read_vector("Enter the vector", x, n);
    Print_vector("We read", x, n);
 
-   for (thread = 0; thread < thread_count; thread++)
-   /* pthread_create. Start….*/
+   for (thread = 0; thread < thread_count; thread++){
+      pthread_create(&thread_handles[thread], NULL, Pth_mat_vect, (void*) thread);
+   }
 
-   // Add code here.
-
-   /* End….*/
-
-   for (thread = 0; thread < thread_count; thread++)
-   /* pthread_join. Start….*/
-
-   // Add code here.
-
-   /* End….*/
+   for (thread = 0; thread < thread_count; thread++){
+      pthread_join(thread_handles[thread], NULL);
+   }
 
    Print_vector("The product is", y, m);
 

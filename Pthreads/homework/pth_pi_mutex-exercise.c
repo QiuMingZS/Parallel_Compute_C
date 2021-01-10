@@ -52,13 +52,8 @@ int main(int argc, char* argv[]) {
    Get_args(argc, argv);
 
    thread_handles = (pthread_t*) malloc (thread_count*sizeof(pthread_t)); 
-   /* (mutex init) Start here.*/
+   pthread_mutex_init(&mutex, NULL);
 
-
-   // Add code here.
-
-
-   /* End here.  */
    sum = 0.0;
 
    GET_TIME(start);
@@ -81,15 +76,10 @@ int main(int argc, char* argv[]) {
    elapsed = finish - start;
    printf("   Single thread est  = %.15f\n", sum);
    printf("The elapsed time is %e seconds\n", elapsed);
-   printf("                   pi = %.15f\n", 4.0*atan(1.0));
+   printf("   Math library estimate of pi    = %.15f\n", 4.0*atan(1.0));
    
-   /* (mutex destroy) Start here.*/
+   pthread_mutex_destroy(&mutex);
 
-
-   // Add code here.
-
-
-   /* End here.  */
    free(thread_handles);
    return 0;
 }  /* main */
@@ -112,13 +102,9 @@ void* Thread_sum(void* rank) {
    for (i = my_first_i; i < my_last_i; i++, factor = -factor) {
       my_sum += factor/(2*i+1);
    }
-   /* Start here.*/
-
-
-   // Add code here.
-
-
-   /* End here.  */
+   pthread_mutex_lock(&mutex);
+   sum += my_sum;
+   pthread_mutex_unlock(&mutex);
 
    return NULL;
 }  /* Thread_sum */

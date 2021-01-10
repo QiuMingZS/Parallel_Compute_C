@@ -59,6 +59,7 @@ int main(int argc, char* argv[]) {
    
    sum = 0.0;
    flag = 0;
+   GET_TIME(start);
    for (thread = 0; thread < thread_count; thread++)  
       pthread_create(&thread_handles[thread], NULL,
           Thread_sum, (void*)thread);  
@@ -68,15 +69,20 @@ int main(int argc, char* argv[]) {
    
 
    sum = 4.0*sum;
+   GET_TIME(finish);
+   elapsed = finish - start;
    printf("With n = %lld terms,\n", n);
    printf("   Multi-threaded estimate of pi  = %.15f\n", sum);
-   
+   printf("   Multi-threaded coputation takes %.15f seconds\n", elapsed);
 
-   
+   GET_TIME(start);
    sum = Serial_pi(n);
+   GET_TIME(finish);
+   elapsed = finish - start;
    
    printf("   Single-threaded estimate of pi = %.15f\n", sum);
-   
+   printf("   Serial coputation takes %.15f seconds\n", elapsed);
+
    printf("   Math library estimate of pi    = %.15f\n", 
        4.0*atan(1.0));
    
@@ -105,13 +111,15 @@ void* Thread_sum(void* rank) {
    else
       factor = -1.0;
 
-   for (i = my_first_i; i < my_last_i; i++, factor = -factor) 
-      
-   /* Start here. */
+   for (i = my_first_i; i < my_last_i; i++, factor = -factor) {
+      my_sum += factor/(2*i + 1);
+   }
 
-   // Add code here.
-
-   /* End here.   */
+   while(flag != my_rank){
+      ;
+   }
+   sum += my_sum;
+   flag = (flag + 1) % thread_count;
 
    return NULL;
 }  /* Thread_sum */
