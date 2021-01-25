@@ -1,8 +1,8 @@
 /* ******************************************************************************** */
 /* Decription: Hello, world! performed by multiple processes                        */
 /* File Name: multi_hello_world.c                                                   */
-/* Compile: $ mpicc  -g -Wall -o multi_hello_world multi_hello_world.c				*/
-/* Execute:	$ mpiexec -n 8 multi_hello_world										*/
+/* Compile: $ mpicc  -g -Wall -o multi_hello_world.o multi_hello_world.c			*/
+/* Execute:	$ mpiexec -n 8 multi_hello_world.o										*/
 /* Last modified: 2021.01.25 21:30, Guanzheng Wang                                  */
 /* ******************************************************************************** */
 
