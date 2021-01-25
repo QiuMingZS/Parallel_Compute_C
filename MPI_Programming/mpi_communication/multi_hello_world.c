@@ -1,3 +1,11 @@
+/* ******************************************************************************** */
+/* Decription: Hello, world! performed by multiple processes                        */
+/* File Name: multi_hello_world.c                                                   */
+/* Compile: $ mpicc  -g -Wall -o multi_hello_world multi_hello_world.c				*/
+/* Execute:	$ mpiexec -n 8 multi_hello_world										*/
+/* Last modified: 2021.01.25 21:30, Guanzheng Wang                                  */
+/* ******************************************************************************** */
+
 #include <stdio.h>
 #include <string.h>
 #include <mpi.h>
