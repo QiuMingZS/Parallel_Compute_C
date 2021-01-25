@@ -1,8 +1,8 @@
 /* ******************************************************************************** */
-/* This file is created by Guanzheng Wang, 2020.10.20 09:05, to realize the         */
-/*  function of Bubble Sort.                                                        */
+/* Decription: To realize the function of bubble sort                               */
+/* File Name: bubble_sort.c                                                         */
+/* Last modified: 2021.01.25 21:15, Guanzheng Wang                                  */
 /* ******************************************************************************** */
-
 #include <stdio.h>
 
 int main()
