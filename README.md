@@ -29,3 +29,9 @@ mpiexec -n 4 ./multi_hello
 gcc -g -Wall -fopenmp -o omp_hello omp_hello.c
 ./omp_hello 4
 ```
+
+# Parallel C program with Pthreads, compile and run like this:
+```bash
+gcc -g -Wall -o hello hello.c -lpthread
+./hello 4
+```
