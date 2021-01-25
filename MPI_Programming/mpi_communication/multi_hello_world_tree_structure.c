@@ -1,3 +1,4 @@
+/* This code is only suitable for 4 processes */
 #include <stdio.h>
 #include <string.h>
 #include <mpi.h>
