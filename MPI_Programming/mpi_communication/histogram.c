@@ -19,10 +19,10 @@ int main(void){
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
 	if (my_rank == 0){
-		double data[20] = {1.3,2.9,0.4,0.3,1.3,
-					   	 4.4,1.7,0.4,3.2,0.3,
-						 4.9,2.4,3.1,4.4,3.9,
-						 0.4,4.2,4.5,4.9,0.9};
+		double data[20] = {1.3, 2.9, 0.4, 0.3, 1.3,
+					   	   4.4, 1.7, 0.4, 3.2, 0.3,
+						   4.9, 2.4, 3.1, 4.4, 3.9,
+						   0.4, 4.2, 4.5, 4.9, 0.9};
 		for (int i=1; i<4; i++){
 			MPI_Send(&data[i*5], 5, MPI_DOUBLE, i, my_rank, MPI_COMM_WORLD);
 		}
