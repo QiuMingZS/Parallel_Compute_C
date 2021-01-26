@@ -4,7 +4,7 @@
 
 int thread_count;
 
-// Data input, to rewrite it as a function
+/* Data input, to rewrite it as a function */
 int row_num = 4;
 int column_num = 8;
 double A[4][8] = {{1, 2, 3, 4, 1, 2, 3, 4}, {5, 6, 7, 8, 5, 6, 7, 8}, {9, 10, 11, 12, 9, 10, 11, 12}, {13, 14, 15, 16, 13, 14, 15, 16}};
@@ -21,24 +21,24 @@ int main(int argc, char* argv[]){
     thread_handles = malloc(thread_count*sizeof(pthread_t));
 
 
-    // fork threads
+    /* fork threads and run the function matrix_vector_multiply */
     for (thread=0; thread<thread_count; thread++){
         pthread_create(&thread_handles[thread], NULL, matrix_vector_multiply, (void*) thread);
     }
 
-    // This will be executed by the main thread
+    /* The following is for main thread */
     printf("The result of A*x is: \n");
     for (int i=0; i<row_num; i++){
         printf("%f\t", y[i]);
     }
     printf("\n");
 
-    // join threads
+    /* join all slave thread */
     for (thread=0; thread<thread_count; thread++){
         pthread_join(thread_handles[thread], NULL);
     }
 
-    // free useless resources
+    /* free useless resources */
     free(thread_handles);
     return 0;
 }   /* main */

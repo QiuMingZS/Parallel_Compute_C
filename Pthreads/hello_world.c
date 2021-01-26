@@ -13,7 +13,7 @@ int main(int argc, char* argv[]){
     thread_count = strtol(argv[1], NULL, 10);
     thread_handles = malloc(thread_count*sizeof(pthread_t));
 
-    // fork threads
+    // fork threads and function Hello will be executed by focked threads
     for (thread=0; thread<thread_count; thread++){
         pthread_create(&thread_handles[thread], NULL, Hello, (void*) thread);
     }
