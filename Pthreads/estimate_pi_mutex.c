@@ -12,32 +12,32 @@ double sum= 0;
 void* get_sum(void* rank);
 
 int main(int argc, char* argv[]){
-    long        thread;         // use long in case of 64-bit system
+    long        thread;                 /* use long in case of 64-bit system */
     pthread_t*  thread_handles;
 
     thread_count = strtol(argv[1], NULL, 10);
     thread_handles = malloc(thread_count*sizeof(pthread_t));
 
-    // mutex initialize
+    /* mutex initialize */
     pthread_mutex_init(&mutex, NULL);
 
-    // fork threads
+    /* fork threads */
     for (thread=0; thread<thread_count; thread++){
         pthread_create(&thread_handles[thread], NULL, get_sum, (void*) thread);
     }
 
-    // This will be executed by the main thread
+    /* This will be executed by the main thread */
     printf("The estimated value of pi is: %f\n", 4*sum);
 
-    // join threads
+    /* join threads */
     for (thread=0; thread<thread_count; thread++){
         pthread_join(thread_handles[thread], NULL);
     }
 
-    // mutex destroy
+    /* mutex destroy */
     pthread_mutex_destroy(&mutex);
 
-    // free useless resources
+    /* free useless resources */
     free(thread_handles);
     return 0;
 }   /* main */
@@ -62,6 +62,7 @@ void* get_sum(void* rank){
         factor = - factor;
     }
 
+    /* critical section protected by mutex lock */
     pthread_mutex_lock(&mutex);
     sum += local_sum;
     pthread_mutex_unlock(&mutex);
