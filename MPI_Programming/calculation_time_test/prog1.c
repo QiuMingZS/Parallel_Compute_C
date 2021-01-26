@@ -48,9 +48,7 @@ int main(void) {
 
    if ( my_rank == 0) {
       all_ints = malloc(comm_sz*sizeof(int));
-      /*
-      Add Code Here. //Call MPI_Gather() to get all_ints.       
-      */
+      
       MPI_Gather(&my_int, 1, MPI_INT, all_ints, 1, MPI_INT, 0, comm);
       
       printf("Ints being summed:\n   ");
@@ -61,9 +59,6 @@ int main(void) {
       printf("Calculating global time spend: %.15e seconds\n", elapsed);
       free(all_ints);
    } else {
-      /*
-      Add Code Here. //Call MPI_Gather() to get all_ints.       
-      */
       MPI_Gather(&my_int, 1, MPI_INT, all_ints, 1, MPI_INT, 0, comm);
    }
    
