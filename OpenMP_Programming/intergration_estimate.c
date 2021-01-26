@@ -15,6 +15,7 @@ int main(int argc, char* argv[]){
     printf("Enter a, b, and n\n");
     scanf("%lf %lf %d", &a, &b, &n);
 #   pragma omp parallel num_threads(thread_count)
+    /* parallel section executed by all the threads */
     Trap(a, b, n, &global_result);
 
     printf("With n = %d trapzoids, our estimate \n", n);
@@ -41,6 +42,7 @@ void Trap(double a, double b, int n, double* global_result_p){
     my_result = my_result*h;
 
 #   pragma omp critical
+    /* critical section accessed only by one process */
     *global_result_p += my_result;
 }
 
